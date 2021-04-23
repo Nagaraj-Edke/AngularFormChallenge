@@ -1,240 +1,289 @@
 <body class="myBox">
-  <div class='px-5 py-4 bg-green green'>
-    <h3 class="text-white">Virtual Workshop Registration Form</h3>
-  </div>
-  <hr class="green">
-
-  <div class="d-flex justify-content-start">
-    <div>
-      <p></p>
-      <p>Join the 3-day web development virtual Workshop and 
-        become a hirable freelancer</p>
-      <p>Participants Fee:$200</p>
-      <p>Limited slots! Reserse now!</p>
+  <div *ngIf="submitted">
+    <div class='px-5 py-4 bg-green green'>
+      <h3 class="text-white">Virtual Workshop Registration Form</h3>
     </div>
+    <hr class="green">
 
-    <div class="ml-5">
-      
-      <p>Virtual Workshop Schedule</p>
-      <pre>May 1-3      9:00 AM - 1:00 PM EST</pre>
-      <pre>May 15-18    9:00 AM - 1:00 PM EST</pre>
-      <pre>June 1-3     9:00 AM - 1:00 PM EST</pre>
-      <pre>May 15-18    9:00 AM - 1:00 PM EST</pre>
-      <pre>July 1-3     9:00 AM - 1:00 PM EST</pre>
-      <pre>May 15-18    9:00 AM - 1:00 PM EST</pre>
-    </div>
-  </div>
-
-  <!-- Form  -->
-
-  <div class="bg-light mx-3 pb-3">
-    <form [formGroup]="registrationForm">
-      <h3 class="text-primary text-center py-2">Registration Form</h3>
-      <div class="form-group mx-3 pl-5 pt-2">
-
-        <label><b> Rate your web development or programming Knowledge</b></label>
-        <div class="form-check mx-1">
-          <input class="form-check-input" type="radio" formControlName="selfRating" id="web1" value="I don't have any idea ata all">
-          <label class="form-check-label" for="web1">&emsp; I don't have any idea ata all</label><br>
-
-          <input class="form-check-input" type="radio" formControlName="selfRating"  id="web2" value="I'm newbie in web developmant and programming">
-          <label class="form-check-label" for="web2"> I'm newbie in web developmant and programming</label><br>
-
-          <input class="form-check-input" type="radio" formControlName="selfRating"   id="web3" value="I have watched tutorials online">
-          <label class="form-check-label" for="web2">I have watched tutorials online</label><br>
-          <input class="form-check-input" type="radio" formControlName="selfRating"   id="web4" value="I have a web development-related working experience">
-          <label class="form-check-label" for="web4">I have a web development-related working experience</label><br>
-          <input class="form-check-input" type="radio" formControlName="selfRating"  id="web5" value="I'm currently working as a web developer and wants to imporve my skills">
-          <label class="form-check-label" for="web5">I'm currently working as a web developer and wants to imporve my skills</label><br>
-          <input class="form-check-input" type="radio" formControlName="selfRating"   id="web6" value="I don't have any idea at all">
-          <label for="web6">I don't have any idea at all</label><br>
-          <input class="form-check-input" type="radio"  formControlName="selfRating" id="web7" value="Other">
-          <input type="text" name="" id="" placeholder="Other">
-        </div>
-        <div *ngIf="selfRating.invalid">
-          <small class="text-danger">It is required field</small>
-        </div>
+    <div class="d-flex justify-content-start">
+      <div>
+        <p></p>
+        <p>Join the 3-day web development virtual Workshop and
+          become a hirable freelancer</p>
+        <p>Participants Fee:$200</p>
+        <p>Limited slots! Reserse now!</p>
       </div>
 
-      <div class="form-check mx-2 pl-5 pt-2">
-        <label><b>I did Like about following course:</b></label>
-
-        <div class="d-flex">
-          <div>        
-            <input type="radio" formControlName="course" class="form-check-input" value="HTML" id="c1">
-            <label for="c1" class="form-check-label">HTML</label><br>
-        
-            <input type="radio" formControlName="course" class="form-check-input" value="JavaScript" name="" id="c2">
-            <label for="c2" class="form-check-label">JavaScript</label><br>
-        
-            <input type="radio" formControlName="course" class="form-check-input" value="Databse" name="" id="c3">
-            <label for="c3" class="form-check-label">Databse</label><br>
-        
-            <input type="radio" formControlName="course" class="form-check-input" value="Frontend-Development" name="" id="c4">
-            <label for="c4" class="form-check-label">Frontend-Development</label>
-          </div>
-          <div class="ml-5">
-            <input type="radio" formControlName="course" class="form-check-input" value="PHP" name="" id="c5">
-            <label for="c5" class="form-check-label">PHP</label><br>
-        
-            <input type="radio" formControlName="course" class="form-check-input" value="Python" name="" id="c6">
-            <label for="c6" class="form-check-label">Python</label><br>
-        
-            <input type="radio" formControlName="course" class="form-check-input" value="web Security" name="" id="c7">
-            <label for="c7" class="form-check-label">web Security</label><br>
-        
-            <input type="radio" formControlName="course" class="form-check-input" value="backend-development" name="" id="c8">
-            <label for="c8" class="form-check-label">backend-development</label>
-          </div>
-        </div>
-        <div *ngIf="course.invalid">
-          <small class="text-danger">It is required field</small>
-        </div>
-      </div>
-
-      <div class='px-5 py-4 bg-green green'>
-        <h3 class="text-white">Participant Information</h3>
-      </div>
-      <br>
-
-      <div class="form-group ml-1">
-        <label><b>Name</b></label><small class="text-danger">*</small>
-        <input type="text" [class.is-invalid]="firstname.invalid&&firstname.touched" formControlName="firstname" placeholder="Enter First name" id="" class="form-control">
-        <div class="alert alert-danger" *ngIf="firstname.invalid&&firstname.touched">
-          <small *ngIf="firstname.errors.required">first name is required</small>
-        </div><br>
-        <input type="text" formControlName="lastname" [class.is-invalid]="lastname.invalid&&lastname.touched"  placeholder="Enter Last name" class="form-control">
-        <div class="alert alert-danger" *ngIf="lastname.invalid&&lastname.touched">
-          <small *ngIf="lastname.errors.required">last name is required</small>
-        </div>
-        <hr class="bg-primary">
-      </div>
-
-      <div class="form-group mx-1">
-        <label><b>Phone number</b></label><small class="text-danger">*</small>
-        <div class="d-flex">
-          <input type="text" [class.is-invalid]="areaCode.invalid&&areaCode.touched" formControlName="areaCode" placeholder="Enter Area code" class="form-control">
-          <div class="alert alert-danger" *ngIf="areaCode.invalid&&areaCode.touched">
-            <small class="text-danger"  *ngIf="areaCode.errors.required">area code is required</small>
-          </div>
-          <label class="form-label"  style="font-size: 30px;"><b>-</b></label>
-          <input type="tel" formControlName="phoneNo" [class.is-invalid]="phoneNo.invalid&&phoneNo.touched" placeholder="Enter phone number" class="form-control">
-          <div class="alert alert-danger" *ngIf="phoneNo.invalid&&phoneNo.touched">
-            <small class="text-danger" *ngIf="phoneNo.errors.required">phone number is required</small>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group ml-1">
-        <label><b>Email</b></label><small class="text-danger">*</small>
-        <input type="email" [class.is-invalid]="email.invalid&&email.touched" formControlName="email" 
-        placeholder="Enter email" class="form-control">
-        <div *ngIf="email.invalid &&email.touched">
-          <small *ngIf="email.errors.required" class="text-danger">email is required</small>
-        </div>
-      </div>
-
-      <div formGroupName="address" class="form-group mx-2">
-        <label><b>Address</b></label>
-        <div class="form-group mx-2">
-          <label>Street address</label>
-          <input type="text" formControlName="streetAdd1"  class="form-control" placeholder="Enter street address">
-          <label>Street address Line 2</label>
-          <input type="text" formControlName="streetAdd2" class="form-control" placeholder="Enter street address line 2">
-          <label>City</label>
-          <input type="text" formControlName="city" id="" class="form-control" placeholder="Enter city">
-          <label>State/Province</label>
-          <input type="text"  formControlName="state" class="form-control" placeholder="Enter state">
-
-          <label>Zipcode</label>
-          <input type="text" formControlName="zipcode" id="" class="form-control" placeholder="Enter zipcode">
-
-        </div>
-
-      </div>
-      <div class="form-group mx-2">
-        <label><b>Occupation</b></label>
-        <input type="text" formControlName="occupation" id="" class="form-control" placeholder="Enter current/previous occupation">
-      </div>
-
-      <div class="form-group mx-2">
-        <label><b>Company Name</b></label>
-        <input type="text" formControlName="companyName" class="form-control" placeholder="Enter company name you worked">
-      </div>
-
-      <div class="form-group mx-2">
-        <label><b>Job Position Title</b></label>
-        <input type="text" formControlName="jobTitle" placeholder="Enter Job title" class="form-control">
-      </div>
-
-      <div class="form-check mx-1">
-        <label><b>Workshop Dates(2021)</b></label><small class="text-danger">*</small>
-        <div class="d-flex mx-4">
-          <div>
-            <p><input class="form-check-input" type="radio" formControlName="workshopDate" id="date1" value="May 1-3"><label class="form-check-label" for="date1">May 1-3</label></p>
-            <p><input class="form-check-input" type="radio" formControlName="workshopDate" id="date3" value="june 1-3"><label class="form-check-label" for="date3">june 1-3</label></p>
-            <p><input class="form-check-input" type="radio" formControlName="workshopDate" id="date5" value="july 1-3"><label class="form-check-label" for="date5">july 1-3</label></p>
-          </div>
-          <div class="mx-5 ">
-            <p><input class="form-check-input" type="radio" formControlName="workshopDate" id="date2" value="May 15-18"><label class="form-check-label" for="date1">May 15-18</label></p>
-            <p><input class="form-check-input" type="radio" formControlName="workshopDate" id="date4" value="june 15-18"><label class="form-check-label" for="date3">june 15-18</label></p>
-            <p><input class="form-check-input" type="radio" formControlName="workshopDate" id="date6" value="july 15-18"><label class="form-check-label" for="date5">july 15-18</label></p>
-          </div>
-        </div>
-      </div>
-
-      <div class="mx-2 form-check">
-        <label><b>Virtual Workshop Payment</b></label><small class="text-danger">*</small>
-        <br>
-        <div class="ml-5">
-          <input class="form-check-input" type="radio" formControlName="payment" id="fee" value="$200">
-          <label class="form-check-label" for="fee">Participant Fee $200</label>
-        </div>
-      </div>
-
-      <div class="mx-2 form-group">
-        <label><b>Select Payment Method</b></label><small class="text-danger">*</small>
-        <div class="ml-5">
-          <select formControlName="paymentMethod" >
-            <option checked>select option</option>
-            <option value="debit card">Debit Card</option>
-            <option value="credit card">Credit card</option>
-            <option value="UPI method">UPI Method</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="from-group mx-2">
-        <label for="">Any addtional comment or information you would like to share?</label><br>
-        <div class="ml-2">
-          <textarea formControlName="comments" placeholder="Enter comments" width="70%"></textarea>
-        </div>
-      </div>
-
-      
-      <div class="from-check mx-2">
-        <label for="">How did you get about this virtual training program</label><small class="text-danger">*</small><br>
-        <div class="d-flex mx-4">
-          <div>
-            <p><input class="form-check-input" type="radio" formControlName="reference" id="ref1" value="facebook"><label class="form-check-label" for="ref1">facebook</label></p>
-            <p><input class="form-check-input" type="radio" formControlName="reference" id="ref2" value="instagram"><label class="form-check-label" for="ref2">instagram</label></p>
-            <p><input class="form-check-input" type="radio" formControlName="reference" id="ref3" value="search engine"><label class="form-check-label" for="ref3">search engine</label></p>
-          </div>
-          <div class="mx-5">
-            <p><input class="form-check-input" type="radio" formControlName="reference" id="ref4" value="youtube"><label class="form-check-label" for="ref4">youtube</label></p>
-            <p><input class="form-check-input" type="radio" formControlName="reference" id="ref5" value="online Ad"><label class="form-check-label" for="ref5">online Ad</label></p>
-            <p><input class="form-check-input" type="radio" formControlName="reference" id="ref6" value="others"><label class="form-check-label" for="ref6">others</label></p>
-          </div>
-        </div>
-      </div>
       <div class="ml-5">
-        <input type="button" [disabled]="registrationForm.invalid" value="Register Now" class="btn btn-primary" (click)="submit()">
 
+        <p>Virtual Workshop Schedule</p>
+        <pre>May 1-3      9:00 AM - 1:00 PM EST</pre>
+        <pre>May 15-18    9:00 AM - 1:00 PM EST</pre>
+        <pre>June 1-3     9:00 AM - 1:00 PM EST</pre>
+        <pre>May 15-18    9:00 AM - 1:00 PM EST</pre>
+        <pre>July 1-3     9:00 AM - 1:00 PM EST</pre>
+        <pre>May 15-18    9:00 AM - 1:00 PM EST</pre>
       </div>
-    </form>
-  
+    </div>
+
+    <!-- Form  -->
+
+    <div class="bg-light mx-3 pb-3">
+      <form [formGroup]="registrationForm">
+        <h3 class="text-primary text-center py-2">Registration Form</h3>
+        <div class="form-group mx-3 pl-5 pt-2">
+
+          <label><b> Rate your web development or programming Knowledge</b></label>
+          <div class="form-check mx-1">
+            <input class="form-check-input" type="radio" formControlName="selfRating" id="web1"
+              value="I don't have any idea ata all">
+            <label class="form-check-label" for="web1">&emsp; I don't have any idea ata all</label><br>
+
+            <input class="form-check-input" type="radio" formControlName="selfRating" id="web2"
+              value="I'm newbie in web developmant and programming">
+            <label class="form-check-label" for="web2"> I'm newbie in web developmant and programming</label><br>
+
+            <input class="form-check-input" type="radio" formControlName="selfRating" id="web3"
+              value="I have watched tutorials online">
+            <label class="form-check-label" for="web2">I have watched tutorials online</label><br>
+            <input class="form-check-input" type="radio" formControlName="selfRating" id="web4"
+              value="I have a web development-related working experience">
+            <label class="form-check-label" for="web4">I have a web development-related working experience</label><br>
+            <input class="form-check-input" type="radio" formControlName="selfRating" id="web5"
+              value="I'm currently working as a web developer and wants to imporve my skills">
+            <label class="form-check-label" for="web5">I'm currently working as a web developer and wants to imporve my
+              skills</label><br>
+            <input class="form-check-input" type="radio" formControlName="selfRating" id="web6"
+              value="I don't have any idea at all">
+            <label for="web6">I don't have any idea at all</label><br>
+            <input class="form-check-input" type="radio" formControlName="selfRating" id="web7" value="Other">
+            <input type="text" name="" id="" placeholder="Other">
+          </div>
+          <div *ngIf="selfRating.invalid">
+            <small class="text-danger">It is required field</small>
+          </div>
+        </div>
+
+        <div class="form-check mx-2 pl-5 pt-2">
+          <label><b>I did Like about following course:</b></label>
+
+          <div class="d-flex">
+            <div>
+              <input type="radio" formControlName="course" class="form-check-input" value="HTML" id="c1">
+              <label for="c1" class="form-check-label">HTML</label><br>
+
+              <input type="radio" formControlName="course" class="form-check-input" value="JavaScript" name="" id="c2">
+              <label for="c2" class="form-check-label">JavaScript</label><br>
+
+              <input type="radio" formControlName="course" class="form-check-input" value="Databse" name="" id="c3">
+              <label for="c3" class="form-check-label">Databse</label><br>
+
+              <input type="radio" formControlName="course" class="form-check-input" value="Frontend-Development" name=""
+                id="c4">
+              <label for="c4" class="form-check-label">Frontend-Development</label>
+            </div>
+            <div class="ml-5">
+              <input type="radio" formControlName="course" class="form-check-input" value="PHP" name="" id="c5">
+              <label for="c5" class="form-check-label">PHP</label><br>
+
+              <input type="radio" formControlName="course" class="form-check-input" value="Python" name="" id="c6">
+              <label for="c6" class="form-check-label">Python</label><br>
+
+              <input type="radio" formControlName="course" class="form-check-input" value="web Security" name=""
+                id="c7">
+              <label for="c7" class="form-check-label">web Security</label><br>
+
+              <input type="radio" formControlName="course" class="form-check-input" value="backend-development" name=""
+                id="c8">
+              <label for="c8" class="form-check-label">backend-development</label>
+            </div>
+          </div>
+          <div *ngIf="course.invalid">
+            <small class="text-danger">It is required field</small>
+          </div>
+        </div>
+
+        <div class='px-5 py-4 bg-green green'>
+          <h3 class="text-white">Participant Information</h3>
+        </div>
+        <br>
+
+        <div class="form-group ml-1">
+          <label><b>Name</b></label><small class="text-danger">*</small>
+          <input type="text" [class.is-invalid]="firstname.invalid&&firstname.touched" formControlName="firstname"
+            placeholder="Enter First name" id="" class="form-control">
+          <div class="alert alert-danger" *ngIf="firstname.invalid&&firstname.touched">
+            <small *ngIf="firstname.errors.required">first name is required</small>
+          </div><br>
+          <input type="text" formControlName="lastname" [class.is-invalid]="lastname.invalid&&lastname.touched"
+            placeholder="Enter Last name" class="form-control">
+          <div class="alert alert-danger" *ngIf="lastname.invalid&&lastname.touched">
+            <small *ngIf="lastname.errors.required">last name is required</small>
+          </div>
+          <hr class="bg-primary">
+        </div>
+
+        <div class="form-group mx-1">
+          <label><b>Phone number</b></label><small class="text-danger">*</small>
+          <div class="d-flex">
+            <input type="text" [class.is-invalid]="areaCode.invalid&&areaCode.touched" formControlName="areaCode"
+              placeholder="Enter Area code" class="form-control">
+            <div class="alert alert-danger" *ngIf="areaCode.invalid&&areaCode.touched">
+              <small class="text-danger" *ngIf="areaCode.errors.required">area code is required</small>
+            </div>
+            <label class="form-label" style="font-size: 30px;"><b>-</b></label>
+            <input type="tel" formControlName="phoneNo" [class.is-invalid]="phoneNo.invalid&&phoneNo.touched"
+              placeholder="Enter phone number" class="form-control">
+            <div class="alert alert-danger" *ngIf="phoneNo.invalid&&phoneNo.touched">
+              <small class="text-danger" *ngIf="phoneNo.errors.required">phone number is required</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group ml-1">
+          <label><b>Email</b></label><small class="text-danger">*</small>
+          <input type="email" [class.is-invalid]="email.invalid&&email.touched" formControlName="email"
+            placeholder="Enter email" class="form-control">
+          <div *ngIf="email.invalid &&email.touched">
+            <small *ngIf="email.errors.required" class="text-danger">email is required</small>
+          </div>
+        </div>
+
+        <div formGroupName="address" class="form-group mx-2">
+          <label><b>Address</b></label>
+          <div class="form-group mx-2">
+            <label>Street address</label>
+            <input type="text" formControlName="streetAdd1" class="form-control" placeholder="Enter street address">
+            <label>Street address Line 2</label>
+            <input type="text" formControlName="streetAdd2" class="form-control"
+              placeholder="Enter street address line 2">
+            <label>City</label>
+            <input type="text" formControlName="city" id="" class="form-control" placeholder="Enter city">
+            <label>State/Province</label>
+            <input type="text" formControlName="state" class="form-control" placeholder="Enter state">
+
+            <label>Zipcode</label>
+            <input type="text" formControlName="zipcode" id="" class="form-control" placeholder="Enter zipcode">
+
+          </div>
+
+        </div>
+        <div class="form-group mx-2">
+          <label><b>Occupation</b></label>
+          <input type="text" formControlName="occupation" id="" class="form-control"
+            placeholder="Enter current/previous occupation">
+        </div>
+
+        <div class="form-group mx-2">
+          <label><b>Company Name</b></label>
+          <input type="text" formControlName="companyName" class="form-control"
+            placeholder="Enter company name you worked">
+        </div>
+
+        <div class="form-group mx-2">
+          <label><b>Job Position Title</b></label>
+          <input type="text" formControlName="jobTitle" placeholder="Enter Job title" class="form-control">
+        </div>
+
+        <div class="form-check mx-1">
+          <label><b>Workshop Dates(2021)</b></label><small class="text-danger">*</small>
+          <div class="d-flex mx-4">
+            <div>
+              <p><input class="form-check-input" type="radio" formControlName="workshopDate" id="date1"
+                  value="May 1-3"><label class="form-check-label" for="date1">May 1-3</label></p>
+              <p><input class="form-check-input" type="radio" formControlName="workshopDate" id="date3"
+                  value="june 1-3"><label class="form-check-label" for="date3">june 1-3</label></p>
+              <p><input class="form-check-input" type="radio" formControlName="workshopDate" id="date5"
+                  value="july 1-3"><label class="form-check-label" for="date5">july 1-3</label></p>
+            </div>
+            <div class="mx-5 ">
+              <p><input class="form-check-input" type="radio" formControlName="workshopDate" id="date2"
+                  value="May 15-18"><label class="form-check-label" for="date1">May 15-18</label></p>
+              <p><input class="form-check-input" type="radio" formControlName="workshopDate" id="date4"
+                  value="june 15-18"><label class="form-check-label" for="date3">june 15-18</label></p>
+              <p><input class="form-check-input" type="radio" formControlName="workshopDate" id="date6"
+                  value="july 15-18"><label class="form-check-label" for="date5">july 15-18</label></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mx-2 form-check">
+          <label><b>Virtual Workshop Payment</b></label><small class="text-danger">*</small>
+          <br>
+          <div class="ml-5">
+            <input class="form-check-input" type="radio" formControlName="payment" id="fee" value="$200">
+            <label class="form-check-label" for="fee">Participant Fee $200</label>
+          </div>
+        </div>
+
+        <div class="mx-2 form-select">
+          <label><b>Select Payment Method</b></label><small class="text-danger">*</small>
+          <div class="ml-5">
+            <select formControlName="paymentMethod" [class.is-invalid]="paymentMethod.invalid && paymentMethod.touched"
+              required class="custom-select mr-4">
+              <option selected value="">select any Method</option>
+              <option value="phonepay">Phone Pay</option>
+              <option value="googlepay">Google Pay</option>
+              <option value="paytm">Paytm</option>
+              <option value="Mobikwik">Mobikwik</option>
+              <option value="Netbanking">Netbanking</option>
+            </select>
+            <div *ngIf="paymentMethod.invalid && paymentMethod.touched">
+              <small class="text-danger">Please Choose Method
+              </small>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="from-group mx-2">
+          <label for="">Any addtional comment or information you would like to share?</label><br>
+          <div class="ml-2">
+            <textarea formControlName="comments" placeholder="Enter comments" width="70%"></textarea>
+          </div>
+        </div>
+
+
+        <div class="from-check mx-2">
+          <label for="">How did you get about this virtual training program</label><small
+            class="text-danger">*</small><br>
+          <div class="d-flex mx-4">
+            <div>
+              <p><input class="form-check-input" type="radio" formControlName="reference" id="ref1"
+                  value="facebook"><label class="form-check-label" for="ref1">facebook</label></p>
+              <p><input class="form-check-input" type="radio" formControlName="reference" id="ref2"
+                  value="instagram"><label class="form-check-label" for="ref2">instagram</label></p>
+              <p><input class="form-check-input" type="radio" formControlName="reference" id="ref3"
+                  value="search engine"><label class="form-check-label" for="ref3">search engine</label></p>
+            </div>
+            <div class="mx-5">
+              <p><input class="form-check-input" type="radio" formControlName="reference" id="ref4"
+                  value="youtube"><label class="form-check-label" for="ref4">youtube</label></p>
+              <p><input class="form-check-input" type="radio" formControlName="reference" id="ref5"
+                  value="online Ad"><label class="form-check-label" for="ref5">online Ad</label></p>
+              <p><input class="form-check-input" type="radio" formControlName="reference" id="ref6"
+                  value="others"><label class="form-check-label" for="ref6">others</label></p>
+            </div>
+          </div>
+        </div>
+        <div class="ml-5">
+          <input type="button" [disabled]="registrationForm.invalid" value="Register Now" class="btn btn-primary"
+            (click)="submit()">
+
+        </div>
+      </form>
+
+    </div>
+
   </div>
 
-
+  <div class="container m-5" *ngIf="!submitted">
+  
+    <div class="col-12">
+      <h4 class="text-success" style="text-align: center;"> Thank You </h4><br>
+       <h5 style="text-align: center;"> Your Registration form submitted successfully!! </h5><br>
+    </div>
+  </div>
 
 </body>

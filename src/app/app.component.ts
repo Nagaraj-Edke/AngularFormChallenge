@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import {DatabaseService} from './database.service'
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,7 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 export class AppComponent {
   title = 'AngularForm';
   registrationForm :FormGroup;
+  submitted:boolean=false;
   get email(){
     return this.registrationForm.get('email')
   }
@@ -36,8 +38,11 @@ export class AppComponent {
   get zipcode(){
     return this.registrationForm.get('zipcode')
   }
+  get paymentMethod(){
+    return this.registrationForm.get('paymentMethod')
+  }
   
-
+  constructor(private data:DatabaseService){}
 
   ngOnInit(){
     this.registrationForm = new FormGroup({
@@ -70,6 +75,10 @@ export class AppComponent {
 
   submit(){
     console.log(this.registrationForm.value);
+    this.data.saveToMongo(this.registrationForm.value).subscribe(data=>{
+      console.log(data)
+    });
+    this.submitted = true;
     
   }
 }
