@@ -1,0 +1,17 @@
+body{
+    margin: 2px 100px;
+    margin-top: 2%;
+    
+}
+.bg-green{
+    height:5em;
+    text-align: center;
+}
+.green{
+    background-color: rgba(0, 128, 0, 0.849);
+}
+.myBox{
+    width: 70%;
+    padding: 20px 10px;
+    background-color: antiquewhite;
+}
