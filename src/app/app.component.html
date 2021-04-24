@@ -1,5 +1,5 @@
 <body class="myBox">
-  <div *ngIf="submitted">
+  <div *ngIf="!submitted">
     <div class='px-5 py-4 bg-green green'>
       <h3 class="text-white">Virtual Workshop Registration Form</h3>
     </div>
@@ -278,7 +278,7 @@
 
   </div>
 
-  <div class="container m-5" *ngIf="!submitted">
+  <div class="container m-5" *ngIf="submitted">
   
     <div class="col-12">
       <h4 class="text-success" style="text-align: center;"> Thank You </h4><br>

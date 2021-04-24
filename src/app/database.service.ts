@@ -11,7 +11,7 @@ export class DatabaseService {
   saveToMongo(data){
     console.log(data);
 
-    return this.http.post('http://localhost:5500/forms',data)
+    return this.http.post('http://localhost:5500/formData',data)
 
   }
 }
